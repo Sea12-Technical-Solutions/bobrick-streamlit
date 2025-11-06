@@ -265,6 +265,12 @@ def main():
         # Display video info
         st.markdown("### 📹 Uploaded Video")
         
+        # Read video bytes once (file pointer moves to end after read)
+        video_bytes = uploaded_video.read()
+        
+        # Reset file pointer to beginning for temp file write
+        uploaded_video.seek(0)
+        
         # Save uploaded video to temporary file
         with tempfile.NamedTemporaryFile(delete=False, suffix=Path(uploaded_video.name).suffix) as tmp_file:
             tmp_file.write(uploaded_video.read())
@@ -272,7 +278,6 @@ def main():
         
         try:
             # Display video
-            video_bytes = uploaded_video.read()
             st.video(video_bytes)
             
             # Analyze button
