@@ -13,6 +13,8 @@ import os
 import tempfile
 from pathlib import Path
 
+# Set environment variable for headless OpenCV (required for Streamlit Cloud)
+os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "0"
 import cv2
 import streamlit as st
 from dotenv import load_dotenv

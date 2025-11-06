@@ -53,29 +53,44 @@ if page == "🏠 Home":
         st.success("✅ OpenAI API key is configured.")
     
 elif page == "📏 Warp Detector":
-    # Import and run warp detector
-    # Temporarily suppress page config from the imported module
-    import streamlit_warp_detector
-    # Override page config if it tries to set it
-    streamlit_warp_detector.main()
+    # Import and run warp detector (lazy import)
+    try:
+        import streamlit_warp_detector
+        streamlit_warp_detector.main()
+    except ImportError as e:
+        st.error(f"Failed to import warp detector: {e}")
+        st.info("Make sure all dependencies are installed, including opencv-python-headless")
     
 elif page == "🔍 Chrome Scratch Detector":
     # Import and run chrome scratch detector
-    import streamlit_chrome_scratch_detector
-    streamlit_chrome_scratch_detector.main()
+    try:
+        import streamlit_chrome_scratch_detector
+        streamlit_chrome_scratch_detector.main()
+    except ImportError as e:
+        st.error(f"Failed to import chrome scratch detector: {e}")
     
 elif page == "📹 Video Rotation Analyzer":
-    # Import and run video rotation analyzer
-    import streamlit_video_rotation_analyzer
-    streamlit_video_rotation_analyzer.main()
+    # Import and run video rotation analyzer (lazy import)
+    try:
+        import streamlit_video_rotation_analyzer
+        streamlit_video_rotation_analyzer.main()
+    except ImportError as e:
+        st.error(f"Failed to import video rotation analyzer: {e}")
+        st.info("Make sure all dependencies are installed, including opencv-python-headless")
     
 elif page == "🔧 Missing Parts App":
     # Import and run missing parts app
-    import streamlit_missing_parts_app
-    streamlit_missing_parts_app.main()
+    try:
+        import streamlit_missing_parts_app
+        streamlit_missing_parts_app.main()
+    except ImportError as e:
+        st.error(f"Failed to import missing parts app: {e}")
     
 elif page == "🔧 Missing Parts App 2":
     # Import and run missing parts app 2
-    import streamlit_missing_parts_app2
-    streamlit_missing_parts_app2.main()
+    try:
+        import streamlit_missing_parts_app2
+        streamlit_missing_parts_app2.main()
+    except ImportError as e:
+        st.error(f"Failed to import missing parts app 2: {e}")
 
