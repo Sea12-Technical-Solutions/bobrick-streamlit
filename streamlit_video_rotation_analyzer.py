@@ -264,9 +264,7 @@ def main():
     if uploaded_video is not None:
         # Display video info
         st.markdown("### 📹 Uploaded Video")
-        
-        # Read video bytes once (file pointer moves to end after read)
-        video_bytes = uploaded_video.read()
+        st.info(f"✅ Video uploaded: **{uploaded_video.name}** ({(uploaded_video.size / 1024 / 1024):.1f} MB)")
         
         # Reset file pointer to beginning for temp file write
         uploaded_video.seek(0)
@@ -277,9 +275,6 @@ def main():
             tmp_video_path = tmp_file.name
         
         try:
-            # Display video
-            st.video(video_bytes)
-            
             # Analyze button
             analyze_button = st.button("🔍 Analyze Video", type="primary", use_container_width=True)
             
